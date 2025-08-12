@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="apiresponse()">api response</button>
+    <button onclick="team()">team</button>
+    <script>
+
+        let numberArray = [1,2,3,4,4,6,10,20,30,40];
+        number = numberArray.filter(function(item){
+           return item>10;
+        });
+
+       console.log(number);
+
+       function sayHello(){
+        console.log('I am sayHello');
+       }
+
+       setTimeout(sayHello,3000);
+
+        function apiresponse(){
+            fetch('http://127.0.0.1:8000/api/client-meeting', { method: "GET"})
+                .then(response => response.json())
+                 .then(result => console.log(result))
+        }
+     
+        function team(){
+          let  url = 'http://127.0.0.1:8040/api/team';
+          let config={method:"GET"};
+
+            fetch(url,config)
+                .then(response=>response.json())
+                    .then(data=>console.log(data))
+        }
+
+    </script>
+</body>
+</html>

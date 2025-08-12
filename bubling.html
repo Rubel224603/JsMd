@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="container">
+        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, deleniti?</h3>
+        <button id="btn">click button</button>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, facilis. Deserunt, illum. At inventore adipisci eligendi recusandae, tenetur autem dolorem.</p>
+    </div>
+
+
+    <pre id="output"></pre>
+    <script>
+            const output = document.querySelector('#output');
+            let parentElement = document.querySelector('#container');
+            //console.log(parentElement);
+            parentElement.addEventListener('click',function(event){
+                //alert('hi');
+                output.textContent += `You clicked ${event.target.tagName} element\n`;
+                
+                
+            })
+
+
+    </script>
+</body>
+</html>

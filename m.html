@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="myText">HellO a125 eBangladesh</p>
+    <button id="btn">Show only The Number</button>
+    <script>
+       let elementText= document.querySelector('#myText').innerText;
+        console.log(elementText);
+       let realNumber = elementText.replace(/[^0-9.]/g,'');
+       
+        document.querySelector('#btn').addEventListener('click',function(){
+             return document.querySelector('#myText').innerText= realNumber;
+        });
+        
+       let firstNumber= "10";
+
+    //    if(firstNumber){
+    //     alert(typeof(firstNumber));
+    //    }
+
+        let a =10.7;
+        //alert(parseFloat(a));
+        number = "45hello42";
+        //alert(parseFloat(number));
+       // alert(Number(a));
+        a ="$1200,00.00";
+        console.log(parseFloat(a));
+        
+
+        let arry =[1.2,3,4];
+        
+       arry.forEach(function (item){
+        console.log(item);
+       }); 
+
+
+     
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+@push('cart_script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const upButtons = document.querySelectorAll('.up-btn');
+            const downButtons = document.querySelectorAll('.down-btn');
+            const grandTotalElement = document.getElementById('grandTotal'); // Get the grand total element
+            
+            const shippingCost = parseFloat(document.getElementById('shippingCost')?.textContent.replace('$', '')) || 0; // Get shipping cost, default to 0 if not found
+
+            // Function to calculate and update the grand total
+            function calculateGrandTotal() {
+                let currentGrandTotal = 0;
+                // Select all subtotal elements
+                const subtotalElements = document.querySelectorAll('.subtotal-value');
+
+                subtotalElements.forEach(element => {
+                    // Extract the numeric value from the subtotal text (e.g., "$123.45" -> 123.45)
+                    const subtotalValue = parseFloat(element.textContent.replace('$', ''));
+                    if (!isNaN(subtotalValue)) { // Ensure it's a valid number
+                        currentGrandTotal += subtotalValue;
+                    }
+                });
+
+                // Add shipping cost to the grand total
+                currentGrandTotal += shippingCost;
+
+                // Update the grand total display
+                if (grandTotalElement) {
+                    grandTotalElement.textContent = `$${currentGrandTotal.toFixed(2)}`;
+                }
+            }
+
+            // Initial calculation when the page loads
+            calculateGrandTotal();
+
+            upButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const index = this.dataset.index;
+                    const input = document.querySelector(`.qty-input[data-index="${index}"]`);
+                    let value = parseInt(input.value);
+                    if (value < 100) { // Assuming a max quantity of 100
+                        value++;
+                        input.value = value;
+
+                        const price = parseFloat(input.dataset.price);
+                        const subtotal = value * price;
+
+                        const subtotalElement = document.querySelector(`.subtotal-value[data-index="${index}"]`);
+                        subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+                        calculateGrandTotal(); // Recalculate grand total after quantity change
+                    }
+                });
+            });
+
+            downButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const index = this.dataset.index;
+                    const input = document.querySelector(`.qty-input[data-index="${index}"]`);
+                    let value = parseInt(input.value);
+                    if (value > 1) { // Assuming a min quantity of 1
+                        value--;
+                        input.value = value;
+                        const price = parseFloat(input.dataset.price);
+                        const subtotal = value * price;
+
+                        const subtotalElement = document.querySelector(`.subtotal-value[data-index="${index}"]`);
+                        subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+                        calculateGrandTotal(); // Recalculate grand total after quantity change
+                    }
+                });
+            });
+
+            // Optional: Add event listener for direct input changes in quantity field
+            // This handles cases where user types quantity directly instead of using buttons
+            const qtyInputs = document.querySelectorAll('.qty-input');
+            qtyInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    let value = parseInt(this.value);
+                    const price = parseFloat(this.dataset.price);
+
+                    // Basic validation for quantity
+                    if (isNaN(value) || value < 1) {
+                        value = 1; // Default to 1 if invalid
+                    } else if (value > 100) {
+                        value = 100; // Cap at 100 if too high
+                    }
+                    this.value = value; // Update input value after validation
+
+                    const subtotal = value * price;
+                    const index = this.dataset.index;
+                    const subtotalElement = document.querySelector(`.subtotal-value[data-index="${index}"]`);
+                    subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+                    calculateGrandTotal(); // Recalculate grand total after manual input change
+                });
+            });
+        });
+    </script>
+@endpush
