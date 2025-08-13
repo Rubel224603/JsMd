@@ -6,27 +6,91 @@
     <title>Document</title>
 </head>
 <body>
-
-    <div id="container">
-        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, deleniti?</h3>
-        <button id="btn">click button</button>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, facilis. Deserunt, illum. At inventore adipisci eligendi recusandae, tenetur autem dolorem.</p>
+    <h3>Bubling inner To Outer</h3>
+    <div class="outer">
+        <div class="inner">
+            <button>Click</button>
+        </div>
     </div>
+    <div class="display">Display</div>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
 
-
-    <pre id="output"></pre>
+    <h4>Counter Value = </h4>
     <script>
-            const output = document.querySelector('#output');
-            let parentElement = document.querySelector('#container');
-            //console.log(parentElement);
-            parentElement.addEventListener('click',function(event){
-                //alert('hi');
-                output.textContent += `You clicked ${event.target.tagName} element\n`;
-                
-                
-            })
+         
+        document.querySelector('.outer').addEventListener('click',function(){
+            document.querySelector('.display').textContent = "Clicked Outer ";
+       
+        }); 
+        document.querySelector('.inner').addEventListener('click',function(event){
+            event.stopPropagation();
+            document.querySelector('.display').textContent = "Clicked inner ";
+        });
+
+        document.querySelector('.list').addEventListener('click',function(event){
+           if( event.target.tagName==="LI"){
+            alert("you clicked " + event.target.textContent+ " number " + event.target.tagName );
+           }
+        })
 
 
+
+        //clouser ...
+
+        function counter(){
+
+            let counter = 0;
+
+            function plus(){
+                counter+=1;
+                return counter;
+            }
+           return plus;
+        }
+        const add = counter();
+      console.log(add());
+      console.log(add());
+      console.log(add());
+      console.log(add());
+      console.log(add());
+      console.log(add());
+
+      function mulitplier(Valu){
+        function result(num){
+            return num * Valu;
+        }
+        return result;
+      }
+      const double= mulitplier(2);
+      console.log(double(2));
+
+        function outer(){
+            let secrect = 10;
+            function inner(){
+                return secrect;
+            } 
+            return inner;
+        }
+        const number= outer();
+        console.log(outer());
+
+
+        function x(){
+            let a=7;
+            function y(){
+                console.log(a);
+            }
+            y();
+        }
+        x();
+      
     </script>
 </body>
 </html>
