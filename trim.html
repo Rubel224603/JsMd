@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js trim()</title>
+</head>
+<body>
+
+    <p id="demo"></p>
+    <p id="show"></p>
+    <p id="object"></p>
+    <br>
+    <p id="objArray"></p>
+    <p id="objectKey"></p>
+    <p id="objectValue"></p>
+    <script>
+        let text = "                                Hello      trim()   Bangaldesh     \n "; //remove white space first and last and new line 
+        document.getElementById('demo').innerHTML = text.trim();
+       // console.log(text.trim());
+
+     let newText ="hello Js";
+        console.log(newText.valueOf());
+        document.getElementById('show').innerHTML =newText.valueOf();
+
+        //js Object...
+        let obj ={
+            'name': "Rubel Hosen",
+            "age":25,
+            "mob":1444,
+        }
+        console.log(obj);
+        document.getElementById('object').innerHTML= obj['name'];
+        document.getElementById('object').innerHTML= obj.name + obj.age+ obj.mob ;
+
+    //Object in array...
+
+        let arryObj ={
+            name:["Somrat","Asif","Hasan"],
+            age:[25,20,30],
+            address:["jhenaidah","Kushtia","Jessore"]
+        }
+
+        document.getElementById('objArray').innerHTML = arryObj.name[1] + arryObj.age[1];
+        
+        document.write('<br>');
+     
+        
+
+        //for...in
+
+        for(let key in arryObj){
+            console.log(key + ": " + arryObj[key]);
+        }
+
+        //full object like code wirte in document...
+        document.write(`<pre> let arryObj = {
+                name:["Somrat","Asif","Hasan"],
+                age:[25,20,30],
+                address:["jhenaidah","Kushtia","Jessore"]
+            }</pre>`
+        );
+
+    document.write("Keys ="+Object.keys(arryObj));
+    document.write('<br>');
+    document.write("values ="+Object.values(arryObj));
+
+    document.write('<br>');
+
+        //for ...
+       // alert( Object.values(arryObj).length);
+        
+        for(let i=0; i<Object.keys(arryObj).length;i++){
+            document.write(arryObj.name[i] + "-" );
+             document.write(arryObj.age[i]+ "-");
+            document.write(arryObj.address[i]);
+            document.write('<br>');
+        }
+
+
+      let arr = [
+        ["orange","Banana",'pineapple'],
+        ["Bangaldesh","Pakistan",'Qatar'],
+        ["taka","rupi",'dirham'],
+      ];
+      arryLenght = arr.length;
+      //alert(arryLenght);
+      for(let j=0; j<arryLenght;j++){
+        //console.log(arr[j]);
+        for(let k=0;k<arr[j].length;k++){
+            document.write(arr[j][k]+" ");
+        }
+        document.write('<br>');
+      }
+
+      let myData =[
+        {
+            name:"Rubel Hosen",
+            location:"Dhaka",
+            mobile:"014785229633"
+
+        },
+        {
+            name:"Kobir Khan",
+            location:"kuhstia",
+            mobile:"0147852963"
+        },
+        ["Rubel",20,'01478529863']
+      ];
+
+     document.write(myData);
+     document.wrte('<br>');
+
+   document.write(myData.name);
+    </script>
+</body>
+</html>
