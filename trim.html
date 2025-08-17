@@ -109,9 +109,103 @@
       ];
 
      document.write(myData);
-     document.wrte('<br>');
+     document.write('<br>');
 
    document.write(myData.name);
+   //normal function ...
+    function jog(){
+        a=10;
+        b=20;
+        console.log(a+b);
+    }
+    jog();
+   //arrow function ...
+   document.write("<br>Arrow Function ");
+    const add = (a,b)=>a+b;
+    console.log(add(10,20));
+
+    const gun = (a,b)=>a*b;
+    gun(100,2);
+    console.log(gun(2,5));
+    document.write(" Anonymous Function");
+    const anonymas = function(u,v){
+        document.write(u+v);
+        return u+v;
+    }
+
+    anonymas(10,2);
+
+    //call back....
+    //  setTimeout(function(){
+    //     document.write("Hello after 1 second");
+    //  },2000);
+
+    //use arrow function with number double ...
+   
+    document.write('<br>');
+    const doubleNumber = (a,b,c,d,e,f,g,h)=>{
+       console.log(a+a);
+       console.log(b+b)
+       console.log(c+c);
+       console.log(d+d);
+       console.log(e+e);
+       console.log(f+f);
+       console.log(g+g);
+       console.log(h+h);
+    }
+    doubleNumber(1,2,3,4,6,7,8,9);
+
+    //normal function...
+    document.write("<h3>Problem 1: Number Double</h3>");
+     let inputArray = [1,2,3,4,5];
+     let outputArray =[];
+
+     document.write("input: [" + inputArray + "]<br>");
+     function convertDouble(){
+        for(let i= 0;i<inputArray.length;i++){
+           outputArray[i] = inputArray[i]+inputArray[i];
+          
+
+        }
+        document.write(`Output:[${outputArray}]`);
+     }
+     convertDouble();
+     //another way to solve  :arrow function...
+
+    outputArray = inputArray.map(num=>num*2);
+     console.log(inputArray);
+    
+     console.log(outputArray);
+    
+
+    //Write an arrow function square that takes a number and returns its square in one line.
+    const square = (n)=>n*n;
+    //alert(square(10));
+    document.write("<br>");
+    //
+    document.write('<h3>Problem 2:Use arrow function to filter out numbers greater than 10 from the array</h3>')
+     const number = [5, 12, 8, 20, 7];
+       // Expected output: [12, 20];
+   
+     document.write(`Input: [5, 12, 8, 20, 7]`);
+    
+  
+    const expectedArray = []
+
+    let theNumber = ()=>{
+        for(let i= 0; i<number.length;i++){
+            if(number[i]>10){
+                expectedArray.push(number[i]);
+               
+            }
+        }
+        document.write("<br>Output:[" + expectedArray +"]");
+    }
+    theNumber();
+
+
+
+
     </script>
 </body>
 </html>
