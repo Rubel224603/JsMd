@@ -1,2 +1,1 @@
-var xhr = new XMLHttpRequest();
-console.log(xhr);
+console.log("hi");
